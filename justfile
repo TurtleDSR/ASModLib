@@ -11,6 +11,8 @@ lib:
 [windows]
 [parallel]
 build-libs: build_lib_c build_lib_java build_lib_python build_lib_csharp
+  @[ -d .build/release/ ] || mkdir -p .build/release/
+  @./zip.exe .build/lib/ .build/release/mod_lib.zip
 
 [group: "lib"]
 [windows]
@@ -103,6 +105,7 @@ bind:
 [group: "test"]
 [windows]
 test-c: lib-test
+  @[ -d src/test/static/scripts/ ] || unzip src/test/static/scripts.zip -d src/test/static/scripts/
   @[ -d .build/test/c/ ] || mkdir -p .build/test/c/
   @[ -d .build/tmp/test/c/ ] || mkdir -p .build/tmp/test/c/
   @[ -d .test/c/ ] || mkdir -p .test/c/
@@ -112,7 +115,8 @@ test-c: lib-test
 
   cp .build/lib/c/mod_lib.dll .build/test/c/
 
-  cp -r src/test/static/* .test/c/
+  cp -r src/test/static/scripts .test/py/scripts/
+  cp -r src/test/static/mods .test/py/mods/
 
   clang {{flags}} src/test/c/test.c -o .build/test/c/test.exe -Isrc/test/c/include/header -Lsrc/test/c/include/lib -lmod_lib -fsanitize=address
 
@@ -124,13 +128,15 @@ test-c: lib-test
 [group: "test"]
 [windows]
 test-py: lib-test
+  @[ -d src/test/static/scripts/ ] || unzip src/test/static/scripts.zip -d src/test/static/scripts/
   @[ -d .test/py/ ] || mkdir -p .test/py/
 
   cp .build/lib/python/_mod_lib.pyd src/test/py/lib/
   cp .build/lib/python/mod_lib.py src/test/py/lib/
 
   cp -r src/test/py/* .test/py/
-  cp -r src/test/static/* .test/py/
+  cp -r src/test/static/scripts .test/py/scripts/
+  cp -r src/test/static/mods .test/py/mods/
 
   cd .test/py/ && py test.py
 

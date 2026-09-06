@@ -1,6 +1,8 @@
 .build/
 .test/
 
+src/test/static/scripts/
+
 .vscode/
 
 #temp file used in compilation stages
