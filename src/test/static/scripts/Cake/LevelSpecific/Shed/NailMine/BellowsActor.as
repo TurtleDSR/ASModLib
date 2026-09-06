@@ -1,6 +1,0 @@
-class ABellowsActor : AHazeActor
-{
-
-
-
-}

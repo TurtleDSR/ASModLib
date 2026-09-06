@@ -1,5 +1,0 @@
-enum ELightRoomSpotlight
-{  
-    Left,
-	Right
-};

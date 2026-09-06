@@ -1,5 +1,0 @@
-enum ESnowyOwlVisibility
-{
-	Animated,
-	Static
-}

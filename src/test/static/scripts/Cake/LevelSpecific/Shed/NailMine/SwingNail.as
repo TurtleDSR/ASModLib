@@ -1,4 +1,0 @@
-class ASwingNail : AHazeActor
-{
-    
-}

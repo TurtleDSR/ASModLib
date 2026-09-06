@@ -1,5 +1,0 @@
-class AToolBoxBossHead : AHazeCharacter
-
-{
-
-}
