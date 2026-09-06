@@ -1,1 +1,7 @@
 .build/
+.test/
+
+.vscode/
+
+#temp file used in compilation stages
+.flags
