@@ -1,0 +1,2 @@
+#remove angelscript since its only used for tests
+*.as linguist-vendored
